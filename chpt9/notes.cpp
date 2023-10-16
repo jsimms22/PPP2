@@ -51,8 +51,9 @@ namespace Enum_Notes
     // This assumes we initialized month_tbl somewhere so that
     // month_tbl[int(month::mar)] is "march"; see 10.11.3
     ostream operator<<(ostream& os, Month m)
-    {
-        return os << month_tbl[int(m)];
+    {   
+        /* TODO */
+        //return os << month_tbl[int(m)];
     }
 }
 
@@ -104,9 +105,9 @@ Enum_Notes::Month Date::month() { return m; }
 
 bool Date::is_valid()
 {
-    if (m < 1 || 12 < m) { return false; }
+    //if (m < 1 || 12 < m) { return false; }
     /* todo */
-    return true;
+    //return true;
 }
 
 void f(int m)
@@ -118,4 +119,3 @@ int main()
 {
     Enum_Notes::Month m = Enum_Notes::Month::sept;
 }
-// attempting change
