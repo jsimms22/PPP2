@@ -1,3 +1,8 @@
+#ifndef CHRONO_H
+#define CHRONO_H
+
+#include "std_lib_facilities.h"
+
 namespace Chrono 
 {
     enum class Day
@@ -81,3 +86,5 @@ namespace Chrono
     Date next_sunday(const Date& d);
     Date next_workday(const Date& d);
 } // Chrono
+
+#endif

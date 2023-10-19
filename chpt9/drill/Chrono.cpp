@@ -51,18 +51,72 @@ namespace Chrono
 
     // yy mm dd
     Date::Date(Year yy, Month mm, int dd)
-        :y{yy}, m{mm}, d{dd} { }
+        :y{yy}, m{mm}, d{dd} 
+    {
+        if ((is_date(y.year(),m,d)) == false) { throw Invalid(); }
+    }
 
     Date::Date(Year yy, int mm, int dd)
     {
         y = yy;
         m = int_to_month(mm);
         d = dd;
+        if ((is_date(y.year(),m,d)) == false) { throw Invalid(); }
     }
 
-    void Date::add_day(int n) { /* todo */ }
+    void Date::add_day(int n) 
+    { 
+        if (n <= 0) { error("cannot add negative days"); }
+        if (n >= 31) { error("adding too many days"); } 
+        
+        if (d + n <= 28 ) {
+            d += n;
+        } else {
+            switch (m) {
+                case Month::feb:
+                    if (d+n <= 28) { 
+                        d += n;
+                        break;
+                    } else {
+                        int temp = 28 - d;
+                        ++m;
+                        d = n - temp;
+                        break;
+                    }
+                    error("add day did not break properly");
+                case Month::apr:
+                case Month::jun:
+                case Month::sept:
+                case Month::nov:
+                    if (d+n <= 30) { 
+                        d += n;
+                        break;
+                    } else {
+                        int temp = 30 - d;
+                        ++m;
+                        d = n - temp;
+                        break;
+                    }
+                    error("add day did not break properly");
+                default:
+                    if (d+n <= 31) { 
+                        d += n;
+                        break;
+                    } else {
+                        int temp = 31 - d;
+                        ++m;
+                        d = n - temp;
+                        break;
+                    }
+                    error("add day did not break properly");
+            } 
+        }
+    }
 
-    void Date::add_month(int n) { /* TODO */}
+    void Date::add_month(int n) 
+    {
+
+    }
 
     void Date::add_year(int n) 
     {
@@ -144,5 +198,3 @@ namespace Chrono
 
     Date next_workday(const Date& d) { /* TODO */}
 } // Chrono
-
-int main() {}

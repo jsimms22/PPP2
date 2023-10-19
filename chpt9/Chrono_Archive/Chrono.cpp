@@ -144,5 +144,3 @@ namespace Chrono
 
     Date next_workday(const Date& d) { /* TODO */}
 } // Chrono
-
-int main() {}
