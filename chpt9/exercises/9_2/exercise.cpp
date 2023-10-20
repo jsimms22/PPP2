@@ -28,21 +28,32 @@ namespace ex9_2
     {
 
     }
-    /*
-    std::ostream& operator<<(std::ostream& os, const Name_Pairs a)
+    
+    std::ostream& operator<<(std::ostream& os, const Name_Pairs& a)
     {
+
         return os;
     }
-    */
-    /*
-    bool operator==(const Name_Pairs a, const Name_Pairs b)
+    
+    bool operator==(const Name_Pairs& a, const Name_Pairs& b)
     {
+        bool outcome = true;
+        if (a.name.size() == b.name.size() /*&& a.age.size() == b.age.size()*/) {
+            for (int i = 0; i < a.name.size() && outcome == true; i++) {
+                if (a.name[i] != b.name[i]) { outcome = false; }
+            }
+            /*
+            for (int i = 0; i < a.age.size() || outcome == true; i++) {
+                if (a.age[i] != b.age[i]) { outcome = false; }
+            }
+            */
+        }
         
+        return outcome;
     }
-    bool operator!=(const Name_Pairs a, const Name_Pairs b)
+
+    bool operator!=(const Name_Pairs& a, const Name_Pairs& b)
     {
         return !(a==b);
     }
-    */
-
 }
