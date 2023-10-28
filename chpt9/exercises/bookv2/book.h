@@ -10,9 +10,14 @@ namespace book
     public:
         class Invalid { };
 
-        Book(string s);
+        Book(string,string,string);
+
         void checkout();
         void checkin();
+
+        std::string get_isbn() const { return isbn; }
+        std::string get_title() const { return title; }
+        std::string get_author() const { return author; }
 
     private:
         std::string isbn;
@@ -24,6 +29,10 @@ namespace book
 
     bool valid_isbn(string);
 
+    bool operator==(const Book&,const Book&);
+    bool operator!=(const Book&,const Book&);
+
+    ostream& operator<<(ostream&,const Book&);
 } // namespace book
 
 #endif
