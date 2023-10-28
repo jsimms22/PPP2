@@ -4,19 +4,22 @@ using namespace ex9_2;
 
 int main()
 {
-    cout << "Building list A\n";
+    std::cout << "Building list A\n";
     Name_Pairs lista = Name_Pairs();
     lista.read_names();
-    for (std::string element : lista.name) {
-        std::cout << element << std::endl;
-    }
+    lista.read_ages();
+    //cout << lista;
+    lista.sort();
+    std::cout << lista;
 
-    cout << "Building list B\n";
+    std::cout << "Building list B\n";
     Name_Pairs listb = Name_Pairs();
     listb.read_names();
-    for (std::string element : listb.name) {
-        std::cout << element << std::endl;
-    }
+    listb.read_ages();
+    //cout << listb;
+    listb.sort();
+    std::cout << listb;
 
-    if (lista == listb) { cout << "well I guess it might work\n"; } 
+    if (lista == listb) { std::cout << "are equal\n"; }
+    if (lista != listb) { std::cout << "are not equal\n"; }
 }
