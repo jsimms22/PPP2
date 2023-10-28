@@ -15,7 +15,12 @@ namespace book
         checked_out = false; 
     }
 
-    Book::Book(string s) { if(valid_isbn(s)) { isbn = s; } else { throw Invalid{}; } }
+    Book::Book(string s) 
+    { 
+        if(valid_isbn(s)) { 
+            isbn = s; 
+        } else { throw Invalid{}; } 
+    }
 
     bool valid_isbn(string isbn)
     // ISBN should conform to the following structure:
@@ -26,9 +31,9 @@ namespace book
         strcpy(isbn_array,isbn.c_str());
         int i = 0;
         if (isbn_array[i] == '-') { return false; }
+
         // This to decipher first component
         for (; i < isbn.length(); i++) {
-            cout << "index " << i << " = "<< isbn_array[i] << '\n';
             if (isdigit(isbn_array[i])) { /*continue*/}
             if (!isdigit(isbn_array[i])) {
                 if (isbn[i] == '-') { 
@@ -36,11 +41,11 @@ namespace book
                 } else { return false; }
             }
         }
-        i++;
+        i++; 
         if (isbn_array[i] == '-') { return false; }
+
         // This to decipher second component
         for (; i < isbn.length(); i++) {
-            cout << "index " << i << " = "<< isbn_array[i] << '\n';
             if (isdigit(isbn_array[i])) { /*continue*/}
             if (!isdigit(isbn_array[i])) {
                 if (isbn[i] == '-') { 
@@ -48,11 +53,11 @@ namespace book
                 } else { return false; }
             }
         }
-        i++;
+        i++; 
         if (isbn_array[i] == '-') { return false; }
+
         // This to decipher third component
         for (; i < isbn.length(); i++) {
-            cout << "index " << i << " = "<< isbn_array[i] << '\n';
             if (isdigit(isbn_array[i])) { /*continue*/}
             if (!isdigit(isbn_array[i])) {
                 if (isbn[i] == '-') { 
@@ -62,14 +67,12 @@ namespace book
         }
         i++;
         if (isbn_array[i] == '-') { return false; }
+
         // This is decipher last component
         for (; i < isbn.length(); i++) {
-            cout << "index " << i << " = "<< isbn_array[i] << '\n';
             if (isdigit(isbn_array[i]) || isalpha(isbn_array[i])) { 
-                //if (isbn_array[i+1] == NULL) { return true; }
             } else { return false; }
         }
-
         return true;
     }
 } // namespace book
