@@ -3,7 +3,6 @@
 
 namespace book
 {
-
     void Book::checkout() 
     { 
         if (checked_out == true) { error("book is already checked out"); }
@@ -15,13 +14,14 @@ namespace book
         checked_out = false; 
     }
 
-    Book::Book(string i, string t, string a) 
+    Book::Book(string i, string t, string a, Book::Genre g) 
     { 
         if(valid_isbn(i)) { 
             isbn = i; 
         } else { throw Invalid{}; }
         title = {t};
         author = {a};
+        genre = {g};
     }
 
     bool valid_isbn(string isbn)
@@ -75,21 +75,46 @@ namespace book
         return true;
     } // valid_isbn()
 
-    bool operator==(Book& a,Book& b)
+    bool operator==(const Book& a, const Book& b)
     {
         return (a.get_isbn() == b.get_isbn());
     }
 
-    bool operator!=(Book& a,Book& b)
+    bool operator!=(const Book& a, const Book& b)
     {
         return !(a==b);
     }
 
-    ostream& operator<<(ostream& os,Book& a)
+    ostream& operator<<(ostream& os, const Book::Genre& g)
+    {
+        switch (g) {
+            case Book::Genre::fiction:
+                cout << "fiction";
+                break;
+            case Book::Genre::nonfiction:
+                cout << "nonfiction";
+                break;
+            case Book::Genre::peridocial:
+                cout << "nonfiction";
+                break;
+            case Book::Genre::biography:
+                cout << "nonfiction";
+                break;
+            case Book::Genre::children:
+                cout << "nonfiction";
+                break;
+            default:
+                cout << "no genre specificied";
+        }
+        return os;
+    }
+
+    ostream& operator<<(ostream& os, const Book& a)
     {
         cout << "isbn: " << a.get_isbn() << '\n'
              << "title: " << a.get_title() << '\n'
-             << "author: " << a.get_author() << '\n';
+             << "author: " << a.get_author() << '\n'
+             << "genre: " << a.get_genre() << '\n';
         return os;
     }
 } // namespace book
