@@ -1,5 +1,5 @@
-#include "std_lib_facilities.h"
-#include "Chrono.h"
+#include "../../std_lib_facilities.h"
+#include "../include/chrono.h"
 
 namespace chrono
 {
@@ -20,7 +20,7 @@ namespace chrono
 
     // This assumes we initialized month_tbl somewhere so that
     // month_tbl[int(month::mar)] is "march"; see 10.11.3
-    // ostream operator<<(ostream& os, Month m)
+    // ostream& operator<<(ostream& os, Month m)
     // {   
     //     /* TODO */
     //     //return os << month_tbl[int(m)];

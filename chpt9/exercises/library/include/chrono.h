@@ -17,7 +17,7 @@ namespace chrono
 
     Month int_to_month(int);
     Month operator++(Month&);
-    //ostream operator<<(ostream&,Month);
+    //ostream& operator<<(ostream&,Month);
 
     class Year
     {

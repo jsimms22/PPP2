@@ -1,6 +1,4 @@
 #include "include/library.h"
-#include "include/book.h"
-#include "include/patron.h"
 
 using book::Book;
 using patron::Patron;
