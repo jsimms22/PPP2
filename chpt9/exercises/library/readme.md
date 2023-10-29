@@ -1,1 +1,1 @@
-this provides solutions for exercises 8-9 in chapter 9
+this provides solutions for exercises 8-10 in chapter 9
