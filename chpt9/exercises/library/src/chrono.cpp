@@ -63,9 +63,9 @@ namespace chrono
         m_day = dd;
     }
 
-    void Date::add_day(int n) { /* todo */ }
+    // void Date::add_day(int n) { /* todo */ }
 
-    void Date::add_month(int n) { /* TODO */}
+    // void Date::add_month(int n) { /* TODO */}
 
     void Date::add_year(int n) 
     {
@@ -102,9 +102,9 @@ namespace chrono
         return true;
     }
 
-    bool is_date(int y, int m, int d) { /* TODO */ }  // overloading is_date
+    // bool is_date(int y, int m, int d) { /* TODO */ }  // overloading is_date
 
-    bool is_leapYear(int y) { /* TODO */ }
+    // bool is_leapYear(int y) { /* TODO */ }
 
     bool operator==(const Date& a, const Date& b)
     {
@@ -141,9 +141,9 @@ namespace chrono
         return is;
     }
 
-    Day day_of_week(const Date& d) { /* TODO */}
+    // Day day_of_week(const Date& d) { /* TODO */}
 
-    Date next_sunday(const Date& d) { /* TODO */ }
+    // Date next_sunday(const Date& d) { /* TODO */ }
 
-    Date next_workday(const Date& d) { /* TODO */}
+    // Date next_workday(const Date& d) { /* TODO */}
 } // Chrono
