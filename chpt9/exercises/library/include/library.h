@@ -17,8 +17,8 @@ namespace lib
     class Library
     {
         public:
-            void add_book(book::Book b) { book_list.push_back(b); }
-            void add_patron(patron::Patron p) { patron_list.push_back(p); }
+            void add_book(book::Book b) { m_book_list.push_back(b); }
+            void add_patron(patron::Patron p) { m_patron_list.push_back(p); }
             void check_out_book(book::Book&,patron::Patron&);
             void check_in_book(book::Book&,patron::Patron&);
             void add_tx(book::Book&,patron::Patron&);
@@ -29,9 +29,9 @@ namespace lib
             vector<patron::Patron> delinquent_patrons_list();
 
         private:
-            vector<book::Book> book_list;
-            vector<patron::Patron> patron_list;
-            vector<Transaction> tx_list;
+            vector<book::Book> m_book_list;
+            vector<patron::Patron> m_patron_list;
+            vector<Transaction> m_tx_list;
     };
 } // namespace lib
 

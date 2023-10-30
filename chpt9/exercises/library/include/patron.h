@@ -8,17 +8,17 @@ namespace patron
     class Patron
     {
         public:
-            void fee_update_op(double);
+            void fee_update_op(double d) { m_accrued_fees += d; }
 
-            std::string user() const { return username; }
-            int card_num() const { return card_number; }
-            double fees() const { return accrued_fees; }
-            bool owes_fee() { return accrued_fees > 0; }
+            std::string user() const { return m_username; }
+            int card_num() const { return m_card_number; }
+            double fees() const { return m_accrued_fees; }
+            bool owes_fee() { return m_accrued_fees > 0; }
 
         private:
-            std::string username;
-            int card_number;
-            double accrued_fees;
+            std::string m_username;
+            int m_card_number;
+            double m_accrued_fees;
 
     };
     

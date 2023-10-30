@@ -9,8 +9,8 @@ namespace chrono
         return Month(x);
     }
 
-    // Operator Overloading
     Month operator++(Month& m)
+    // Operator Overloading
     // ? -> arithmetic if
     // m becomes jan if (m == Month::dec) and Month(int(m)+1)
     {
@@ -34,30 +34,33 @@ namespace chrono
         return dd;
     }
 
+    
+    Date::Date()
     // Default Constructor
     // 2001 Jan 1
-    Date::Date()
     {
-        y = default_date().year();
-        m = default_date().month();
-        d = default_date().day();
+        m_year = default_date().year();
+        m_month = default_date().month();
+        m_day = default_date().day();
     }
 
+    
+    Date::Date(Year yy)
     // since values are not provided for Month and Day, 
     // they use the default constructor for values
-    // yy Jan 1
-    Date::Date(Year yy) 
-        :y{yy} { if (!is_date(y.year(),Month::jan,1)) { throw Invalid(); } }
+    // yy Jan 1 
+        :m_year{yy} { if (!is_date(m_year.year(),Month::jan,1)) { throw Invalid(); } }
 
-    // yy mm dd
+    
     Date::Date(Year yy, Month mm, int dd)
-        :y{yy}, m{mm}, d{dd} { }
+    // yy mm dd
+        :m_year{yy}, m_month{mm}, m_day{dd} { }
 
     Date::Date(Year yy, int mm, int dd)
     {
-        y = yy;
-        m = int_to_month(mm);
-        d = dd;
+        m_year = yy;
+        m_month = int_to_month(mm);
+        m_day = dd;
     }
 
     void Date::add_day(int n) { /* todo */ }
@@ -67,11 +70,11 @@ namespace chrono
     void Date::add_year(int n) 
     {
         // use march instead of february for non-leap years
-        if (m==Month::feb && d==29 && !is_leapYear(y.year()+n)) {
-            m = Month::mar;
-            d = 1;
+        if (m_month==Month::feb && m_day==29 && !is_leapYear(m_year.year()+n)) {
+            m_month = Month::mar;
+            m_day = 1;
         }
-        y.add_intYear(n);
+        m_year.add_intYear(n);
     }
             
     bool is_date(int y, Month m, int d) 
@@ -101,7 +104,7 @@ namespace chrono
 
     bool is_date(int y, int m, int d) { /* TODO */ }  // overloading is_date
 
-    bool is_leapYear(int y) { /* TODO */}
+    bool is_leapYear(int y) { /* TODO */ }
 
     bool operator==(const Date& a, const Date& b)
     {

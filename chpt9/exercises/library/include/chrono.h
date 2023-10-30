@@ -26,11 +26,11 @@ namespace chrono
     public:
         class Invalid { };  // an object to throw as exception
         Year() { };
-        Year(int x) :y{x} { if (x < s_min || x > s_max) { throw Invalid{}; } }
-        int year() const { return y; }
-        void add_intYear(int x) { y += x; }
+        Year(int y) :m_y{y} { if (y < s_min || y > s_max) { throw Invalid{}; } }
+        int year() const { return m_y; }
+        void add_intYear(int x) { m_y += x; }
     private:
-        int y;
+        int m_y;
     };
 
     class Date
@@ -54,10 +54,10 @@ namespace chrono
         const Date& default_date();     
 
         // non-modifying operators
-        int day() const { return d; }
-        Month month() const { return m; };
-        int month_to_int() const { return (int)m; }
-        int year() const { return y.year(); } 
+        int day() const { return m_day; }
+        Month month() const { return m_month; };
+        int month_to_int() const { return (int)m_month; }
+        int year() const { return m_year.year(); } 
 
         // modifying operators
         void add_day(int);
@@ -65,9 +65,9 @@ namespace chrono
         void add_year(int);
 
     private:
-        Year y;
-        Month m;
-        int d;
+        Year m_year;
+        Month m_month;
+        int m_day;
     }; 
 
     bool is_date(int y, Month m, int d);

@@ -5,23 +5,23 @@ namespace book
 {
     void Book::checkout() 
     { 
-        if (checked_out == true) { error("book is already checked out"); }
-        checked_out = true; 
+        if (m_checked_out == true) { error("book is already checked out"); }
+        m_checked_out = true; 
     }
     void Book::checkin() 
     { 
-        if (checked_out == false) { error("book was not checked out"); }
-        checked_out = false; 
+        if (m_checked_out == false) { error("book was not checked out"); }
+        m_checked_out = false; 
     }
 
     Book::Book(string i, string t, string a, Book::Genre g) 
     { 
         if(valid_isbn(i)) { 
-            isbn = i; 
+            m_isbn = i; 
         } else { throw Invalid{}; }
-        title = {t};
-        author = {a};
-        genre = {g};
+        m_title = {t};
+        m_author = {a};
+        m_genre = {g};
     }
 
     bool valid_isbn(string isbn)
@@ -95,13 +95,13 @@ namespace book
                 cout << "nonfiction";
                 break;
             case Book::Genre::peridocial:
-                cout << "nonfiction";
+                cout << "peridocial";
                 break;
             case Book::Genre::biography:
-                cout << "nonfiction";
+                cout << "biography";
                 break;
             case Book::Genre::children:
-                cout << "nonfiction";
+                cout << "children";
                 break;
             default:
                 cout << "no genre specificied";

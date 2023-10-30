@@ -24,18 +24,18 @@ namespace book
         void checkout();
         void checkin();
 
-        std::string get_isbn() const { return isbn; }
-        std::string get_title() const { return title; }
-        std::string get_author() const { return author; }
-        Genre get_genre() const { return genre; }
+        std::string get_isbn() const { return m_isbn; }
+        std::string get_title() const { return m_title; }
+        std::string get_author() const { return m_author; }
+        Genre get_genre() const { return m_genre; }
 
     private:
-        std::string isbn;
-        std::string title;
-        std::string author;
-        Genre genre;
-        std::string copyright;
-        bool checked_out = false;
+        std::string m_isbn;
+        std::string m_title;
+        std::string m_author;
+        Genre m_genre;
+        std::string m_copyright;
+        bool m_checked_out = false;
     };
 
     bool valid_isbn(string);
