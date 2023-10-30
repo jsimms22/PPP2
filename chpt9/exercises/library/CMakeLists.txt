@@ -4,4 +4,4 @@ project(library)
 
 add_executable(library main.cpp)
 
-add_subdirectory(src include)
+add_subdirectory(src)
