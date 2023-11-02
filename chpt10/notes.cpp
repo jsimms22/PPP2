@@ -60,10 +60,7 @@ void fill_from_file(vector<Reading>& r, std::string& name)
 
 int main(int argc, char** argv) //argc is number of arguments + 1, since the name of the program will prepend to array argv
 {
-    srand(time(NULL));
-    vector<Reading> data;
     std::string filename = "nofile";
-    
     if (argc < 2) { 
         error("no file name given as argument");
     } else if (argc > 2) {
@@ -71,6 +68,9 @@ int main(int argc, char** argv) //argc is number of arguments + 1, since the nam
     } else {
         filename = argv[1]; // index 0 would be the .exe
     }
+
+    srand(time(NULL));
+    vector<Reading> data;
 
     if (filename == "nofile") { error("could not read given filename"); }
     std::cout << "Attempting to write to: " + filename << '\n';
