@@ -1,5 +1,5 @@
 /*
-    solutions for exercise 1-2
+    solutions for exercise 3
         -this program will take in the name of a data file as an argument
         -calculate 50 random integer-typed temperatured separated by whitespace in file
         -read values from file and store in a vector
@@ -10,19 +10,15 @@
 #include<iostream>
 #include<vector>
 #include<ctime>
-
+#include "temps.h"
 #include "../../../std_lib_facilities.h"
 
-struct Reading
-{
-    //int hour;
-    double temp;
-};
+int nTemps = 50;
 
 void build_file(std::string& name)
 {
     std::ofstream ost {name};   // ost is an alias for cout that write to file: name
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < nTemps; i++) {
         ost /*<< i << " " */<< rand()%100 << ' ';//'\n';  // generating random temperatures [0-100) for a day
     }
     ost.close();
@@ -57,7 +53,6 @@ void fill_from_file(vector<Reading>& r, std::string& name)
     ist.close();
 }
 
-
 int main(int argc, char** argv) //argc is number of arguments + 1, since the name of the program will prepend to array argv
 {
     std::string filename = "nofile";
@@ -81,4 +76,11 @@ int main(int argc, char** argv) //argc is number of arguments + 1, since the nam
     for (Reading datum : data) {
         std::cout /*<< "hour : " << datum.hour << '\t' */<< "temperature: " << datum.temp << '\n'; 
     }
+
+    double mean_temp = mean(data);
+    std::cout << "average temp: " << mean_temp << '\n';
+    double median_temp = median(data);
+    std::cout << "median temp: " << median_temp << '\n';
+
+    build_file(filename);
 }
