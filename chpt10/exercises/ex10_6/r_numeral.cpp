@@ -13,11 +13,15 @@ namespace roman
 
     int Roman_Int::as_int()
     {
-        int val = 0;
-        for (char element : m_roman_numeral) {
-            val += roman_to_int_map[element];
+        int sum = 0;
+        for (int i = 0; i < m_roman_numeral.length(); i++) {
+            if (roman_to_int_map[m_roman_numeral[i]] < roman_to_int_map[m_roman_numeral[i+1]]) {
+                sum -= roman_to_int_map[m_roman_numeral[i]];
+            } else {
+                sum += roman_to_int_map[m_roman_numeral[i]];
+            }
         }
-        return val;
+        return sum;
     }
 
     std::ostream& operator<<(std::ostream& os, Roman_Int& r) 
