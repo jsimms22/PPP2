@@ -73,19 +73,22 @@ Token Token_stream::get()
 	case '*': case '/':
 	case '%': case '=':
 		return Token(ch);   // let each character represent itself
-	case '.':               // a floating-point literal can start with a dot
-    case '0': case '1': 
-    case '2': case '3': 
-    case '4': case '5': 
-    case '6': case '7': 
-    case '8': case '9':
+	case 'I':               // a floating-point literal can start with a dot
+    case 'V': 
+    case 'X': 
+    case 'L': 
+    case 'C': 
+    case 'D':
+	case 'M':
 	{	
         cin.unget();    // put digit back into the input stream
-	    double val;
-	    cin >> val;     // read a floating-point number
-	    return Token(number, val);  // let '8' represent "a number"
+		string s;
+	    cin >> s;
+		roman::Roman_Int r = roman::Roman_Int(s);
+	    return Token(number, r.as_int());  // let '8' represent "a number"
 	}
 	default:
+	/*
 		if (isalpha(ch) || ch == '_') {
 			string s;
 			s += ch;
@@ -97,6 +100,7 @@ Token Token_stream::get()
             if (s == powkey) return Token(power);
 			return Token(name, s);
 		}
+	*/
 		error("Bad token");
 	}
 }
