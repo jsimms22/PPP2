@@ -80,6 +80,7 @@ int main()
 
     // we can set precisison manually with setprecision();
     /*
+        this prints:
         1234.57             1234.567890             1.234568e+03
         1234.6              1234.56789              1.23457e+03
         1234.5679           1234.56789000           1.23456789e+03
@@ -95,4 +96,15 @@ int main()
               << 1234.56789 << "\t"
               << std::fixed << 1234.56789 << "\t\t"
               << std::scientific<< 1234.56789 << '\n';
+
+    // modifying fields
+    /*
+        this prints:
+        123456|123456|  123456|123456       |123456|
+    */
+    std::cout << 123456
+              << '|' << std::setw(4) << 123456 << '|'
+              << std::setw(8) << 123456 << '|'
+              << 123456 << std::setw(8) << '|'
+              << 123456 << "|\n";
 }
