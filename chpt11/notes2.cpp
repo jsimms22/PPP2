@@ -104,7 +104,50 @@ int main()
 
     std::cout << d1 << std::setw(10) << d2 << std::setw(4) << d3 << '\n';
 
+/* LINE ORIENTED INPUT */
 
+    std::string name1;
+    std::cin >> name1;          // input: Dennis Ritchie
+    std::cout << name1 << '\n'; // output: Dennis
+
+    // vs   
+
+    std::string name2;  
+    getline(cin,name2);         // input: Dennis Ritchie
+    std::cout << name2 << '\n'; // output: Dennis Ritchie
+
+/* CHARACTER CLASSIFICATION */
+
+    // consider: 1 + 4 * x <= y / z * 5
+    // sometimes when we read a whole line it can get messy
+    // sometimes we need to go down a level of abstraction instead of up
+
+    for (char ch; cin.get(ch); ) {
+        if (isspace(ch)) { /* do nothing, e.i. skip */ }
+        if (isdigit(ch)) { /* read a number */ }
+        else if (isalpha(ch)) { /* read an identifier */ }
+        else { /* deal with operation */ }
+    }
+
+    /*
+        std library char classification functions:
+        -isspace(c)
+        -isalpha(c)
+        -isdigit(c)
+        -isxdigit(c)    -> is c a hex digit or hex alpha
+        -isupper(c)
+        -islower(c)
+        -isalnum(c)     -> is c a letter or a decimal digit
+        -iscntrl(c)     -> is c a control character (ASCII 0..31 or 127)
+        -ispunct(c)
+        -isprint(c)     -> is c printable ASCII
+        -isgraph(c)     -> is isalpha(), isdigit(), or ispunct()
+    */
+
+    void tolower(std::string& s)
+    {
+        for (char& x : s) { x = tolower(x); }
+    }
 }
 
 /* STRING STREAMS FUNCTION */
