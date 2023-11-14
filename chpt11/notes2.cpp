@@ -144,10 +144,7 @@ int main()
         -isgraph(c)     -> is isalpha(), isdigit(), or ispunct()
     */
 
-    void tolower(std::string& s)
-    {
-        for (char& x : s) { x = tolower(x); }
-    }
+    
 }
 
 /* STRING STREAMS FUNCTION */
