@@ -27,10 +27,10 @@ int main()
     std::string new_filename = "new_text.txt";  
     std::ofstream ofs {new_filename};           // open ofstream to new file
 
-    for (std::string const element : word_bin) {
-        ofs << element << " ";                  // write vector elements to file
+    for (std::string const element : word_bin) { 
+        ofs << element << " ";                  // write vector elements to file}
     }
-
+    
     ifs.close();
     ofs.close();
 
