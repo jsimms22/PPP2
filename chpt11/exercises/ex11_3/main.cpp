@@ -42,5 +42,5 @@ int main()
         ofs.close();
     } catch (std::exception& e) {
         std::cout << e.what() << '\n';
-    }
+    } catch (...) { }
 }
