@@ -1,4 +1,5 @@
-#include "Graph.h"
+#include "../include/Graph.h"
+#include "../include/std_lib_facilities.h"
 #include<map>
 
 namespace Graph_lib {
@@ -71,7 +72,7 @@ void Polygon::add(Point p)
 	}
 
 	for (int i = 1; i<np-1; ++i) {	// check that new segment doesn't interset and old point
-		Point ignore{0,0};
+		Point ignore(0,0);
 		if (line_segment_intersect(point(np-1),p,point(i-1),point(i),ignore))
 			error("intersect in polygon");
 	}
@@ -145,7 +146,7 @@ Function::Function(Fct f, double r1, double r2, Point xy, int count, double xsca
 	double dist = (r2-r1)/count;
 	double r = r1;
 	for (int i = 0; i<count; ++i) {
-		add(Point{xy.x+int(r*xscale),xy.y-int(f(r)*yscale)});
+		add(Point(xy.x+int(r*xscale),xy.y-int(f(r)*yscale)));
 		r += dist;
 	}
 }
@@ -166,7 +167,7 @@ void Rectangle::draw_lines() const
 
 
 Axis::Axis(Orientation d, Point xy, int length, int n, string lab)
-	:label(Point{0,0},lab)
+	:label(Point(0,0),lab)
 {
 	if (length<0) error("bad axis length");
 	switch (d){
@@ -310,7 +311,7 @@ bool can_open(const string& s)
             // check if a file named s exists and can be opened for reading
 {
 	ifstream ff(s.c_str());
-	return ff.is_open();
+	return ff;
 }
 
 
