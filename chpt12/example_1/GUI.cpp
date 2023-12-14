@@ -1,4 +1,5 @@
-#include "../include/GUI.h"
+#include "include/GUI.h"
+#include "include/std_lib_facilities.h"
 #include <sstream>
 
 using namespace Graph_lib;
@@ -20,10 +21,10 @@ int In_box::get_int()
 	return atoi(p);
 }
 
-std::string In_box::get_string()
+string In_box::get_string()
 {
 	Fl_Input& pi = reference_to<Fl_Input>(pw);
-	return std::string(pi.value());
+	return string(pi.value());
 }
 
 void In_box::attach(Window& win)
@@ -35,12 +36,12 @@ void In_box::attach(Window& win)
 void Out_box::put(int i)
 {
 	Fl_Output& po = reference_to<Fl_Output>(pw);
-	std::stringstream& ss;
+	std::stringstream ss;
 	ss << i;
 	po.value(ss.str().c_str());
 }
 
-void Out_box::put(const std::string& s)
+void Out_box::put(const string& s)
 {
 	reference_to<Fl_Output>(pw).value(s.c_str());
 }
@@ -51,10 +52,10 @@ void Out_box::attach(Window& win)
 	own = &win;
 }
 
-Menu::Menu(Point xy, int w, int h, Kind kk, const std::string& s)
-:Widget(xy,w,h,s,0), k(kk), offset(0)
-{
-}
+// Menu::Menu(Point xy, int w, int h, Kind kk, const string& s)
+// :Widget(xy,w,h,s,0), k(kk), offset(0)
+// {
+// }
 
 int Menu::attach(Button& b)
 {
@@ -63,11 +64,11 @@ int Menu::attach(Button& b)
 
 	switch(k) {
 	case horizontal:
-		b.loc = Point(loc.x+offset,loc.y);
+		b.loc = Point{loc.x+offset,loc.y};
 		offset+=b.width;
 		break;
 	case vertical:
-		b.loc = Point(loc.x,loc.y+offset);
+		b.loc = Point{loc.x,loc.y+offset};
 		offset+=b.height;
 		break;
 	}

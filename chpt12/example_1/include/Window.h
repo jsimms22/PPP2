@@ -2,10 +2,11 @@
 #define WINDOW_GUARD 1
 
 #include "fltk.h"
+
+#include "std_lib_facilities.h"
+
 #include "Point.h"
-#include "GUI.h"
-#include<string>
-#include<vector>
+//#include "GUI.h"
 
 namespace Graph_lib {
 
@@ -14,8 +15,8 @@ class Widget;
 
 class Window : public Fl_Window { 
 public: 
-	Window(int w, int h, const std::string& title );			// let the system pick the location
-	Window(Point xy, int w, int h, const std::string& title );	// top left corner in xy
+	Window(int w, int h, const string& title );			// let the system pick the location
+	Window(Point xy, int w, int h, const string& title );	// top left corner in xy
 	virtual ~Window() { }
 
 	int x_max() const { return w; }
@@ -23,7 +24,7 @@ public:
 
 	void resize(int ww, int hh) { w=ww, h=hh; size(ww,hh); }
 
-	void set_label(const std::string& s) { label(s.c_str()); }
+	void set_label(const string& s) { label(s.c_str()); }
 
 	void attach(Shape& s);
 	void attach(Widget& w);
@@ -37,7 +38,7 @@ protected:
 	void draw();
      
 private:
-	  std::vector<Shape*> shapes;	// shapes attached to window
+	  vector<Shape*> shapes;	// shapes attached to window
 	  int w,h;					// window size
 
 	  void init();

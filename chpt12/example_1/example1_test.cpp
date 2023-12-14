@@ -1,5 +1,5 @@
-#include "Simple_window.h"
-#include "Graph.h"
+#include "include/Simple_window.h"
+#include "include/Graph.h"
 
 int main()
 {
