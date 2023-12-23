@@ -7,8 +7,8 @@ constexpr int window_height = 1000;
 
 int main()
 {
-    Simple_window win = {Graph_lib::Point{100,200},window_width,window_height,"Window for Exercise 1"};
-    Graph_lib::Arc a = Graph_lib::Arc(Point{100,100},50.0,0.0,180.0);
+    Simple_window win = {Graph_lib::Point{0,0},window_width,window_height,"Window for Exercise 1"};
+    Graph_lib::Arc a = Graph_lib::Arc(Point{100,100},50,50,0,360);
 
     win.attach(a);
 

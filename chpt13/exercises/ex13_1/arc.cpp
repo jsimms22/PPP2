@@ -2,10 +2,10 @@
 
 namespace Graph_lib {
 
-void Arc::draw_arc() const
+void Arc::draw_lines() const
 {
     if (color().visibility()) {
-        fl_arc(point(0).x,point(0).y,r,a1,a2);
+        fl_arc(point(0).x,point(0).y,w,h,a1,a2);
     }
 }
 
